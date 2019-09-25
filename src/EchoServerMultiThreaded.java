@@ -20,6 +20,7 @@ public class EchoServerMultiThreaded  {
      **/
     public static void main(String args[]){
         ServerSocket listenSocket;
+        int uniqueId = 0;
 
         if (args.length != 1) {
             System.out.println("Usage: java EchoServer <EchoServer port>");
@@ -32,7 +33,7 @@ public class EchoServerMultiThreaded  {
             while (true) {
                 Socket clientSocket = listenSocket.accept();
                 System.out.println("Connection from:" + clientSocket.getInetAddress() + " || New client request received :" + clientSocket);
-                ClientThread ct = new ClientThread(clientSocket);
+                ClientThread ct = new ClientThread(clientSocket, ++uniqueId);
                 clientThreads.add(ct);
                 ct.start();
             }
@@ -41,9 +42,10 @@ public class EchoServerMultiThreaded  {
         }
     }
 
-    public static synchronized void broadcast(String msg) {
+    public static synchronized void broadcast(String msg, int senderID) {
+        String message = "[" + senderID + "] : " + msg;
         for (ClientThread clientThread: clientThreads) {
-            clientThread.sendMessage(msg);
+            clientThread.sendMessage(message);
         }
     }
 }

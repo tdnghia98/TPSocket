@@ -15,8 +15,10 @@ public class ClientThread
     private Socket clientSocket;
     private BufferedReader socIn;
     private PrintStream socOut;
+    public int id;
 
-    ClientThread(Socket s) throws IOException {
+    ClientThread(Socket s, int id) throws IOException {
+        this.id = id;
         this.clientSocket = s;
         socIn = null;
         socIn = new BufferedReader(
@@ -36,7 +38,7 @@ public class ClientThread
                 String line = this.socIn.readLine();
                 // Add msg to msg history list
                 System.out.println("Client Thread received message: " + line);
-                EchoServerMultiThreaded.broadcast(line);
+                EchoServerMultiThreaded.broadcast(line, this.id);
             }
         } catch (Exception e) {
             System.err.println("Error in EchoServer:" + e);
@@ -44,7 +46,7 @@ public class ClientThread
     }
 
     public void sendMessage(String msg) {
-        this.socOut.println("Message from server: " + msg);
+        this.socOut.println(msg);
     }
 
 }
