@@ -35,6 +35,7 @@ public class EchoServerMultiThreaded  {
                 System.out.println("Connection from:" + clientSocket.getInetAddress() + " || New client request received :" + clientSocket);
                 ClientThread ct = new ClientThread(clientSocket, ++uniqueId);
                 clientThreads.add(ct);
+                sendHistoryToClientThread(ct);
                 ct.start();
             }
         } catch (Exception e) {
@@ -44,8 +45,15 @@ public class EchoServerMultiThreaded  {
 
     public static synchronized void broadcast(String msg, int senderID) {
         String message = "[" + senderID + "] : " + msg;
+        messages.add(message);
         for (ClientThread clientThread: clientThreads) {
             clientThread.sendMessage(message);
+        }
+    }
+
+    private static void sendHistoryToClientThread(ClientThread ct) {
+        for (String message: messages) {
+            ct.sendMessage(message);
         }
     }
 }

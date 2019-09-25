@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a387842f-0165-4666-9218-7bb7b76856f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Socket/EchoServerMultiThreaded.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EchoServerMultiThreaded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EchoServerMultiThreaded.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +41,43 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Multirun.Unnamed">
+  <component name="RunManager" selected="Application.Client 2 (4)">
     <configuration name="Client 1" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client" />
+      <module name="Socket" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client 2 (1)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client" />
+      <module name="Socket" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client 2 (2)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client" />
+      <module name="Socket" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client 2 (3)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client" />
+      <module name="Socket" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client 2 (4)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client" />
+      <module name="Socket" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client 2 (5)" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Client" />
       <module name="Socket" />
       <method v="2">
@@ -75,6 +108,11 @@
     <list>
       <item itemvalue="Application.Client 1" />
       <item itemvalue="Application.Client 2" />
+      <item itemvalue="Application.Client 2 (1)" />
+      <item itemvalue="Application.Client 2 (2)" />
+      <item itemvalue="Application.Client 2 (3)" />
+      <item itemvalue="Application.Client 2 (4)" />
+      <item itemvalue="Application.Client 2 (5)" />
       <item itemvalue="Application.EchoServerMultiThreaded" />
       <item itemvalue="Multirun.Unnamed" />
     </list>
@@ -89,7 +127,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1569404054564</updated>
-      <workItem from="1569404058844" duration="3157000" />
+      <workItem from="1569404058844" duration="4186000" />
     </task>
     <servers />
   </component>
