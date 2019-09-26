@@ -34,6 +34,7 @@ public class EchoServerMultiThreaded  {
                 Socket clientSocket = listenSocket.accept();
                 System.out.println("Connection from:" + clientSocket.getInetAddress() + " || New client request received :" + clientSocket);
                 ClientThread ct = new ClientThread(clientSocket, ++uniqueId);
+                new PrintStream(clientSocket.getOutputStream()).println(uniqueId);
                 clientThreads.add(ct);
                 sendHistoryToClientThread(ct);
                 ct.start();

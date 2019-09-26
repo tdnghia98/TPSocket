@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Unnamed" type="Multirun" factoryName="Multirun" separateTabs="true" startOneByOne="true" markFailedProcess="true" hideSuccessProcess="false" delayTime="0">
+    <runConfiguration name="EchoServerMultiThreaded" type="Application" />
+    <runConfiguration name="ClientGUI" type="Application" />
+    <runConfiguration name="ClientGUI (1)" type="Application" />
+    <method v="2" />
+  </configuration>
+</component>
