@@ -11,13 +11,13 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class ClientGUI extends JFrame implements ActionListener, KeyListener {
-    private javax.swing.JButton sendBtn;
+    private JButton sendBtn;
     private JButton startBtn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private JLabel idLabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private static javax.swing.JTextArea conversationTextArea;
-    private javax.swing.JTextField messageInputTextField;
+    private static JTextArea conversationTextArea;
+    private JTextField messageInputTextField;
+    private int id;
     private Client client;
 
     public ClientGUI() {
@@ -28,10 +28,12 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener {
         startBtn.setBounds(this.getSize().width/2, this.getSize().height, 50, 50);
         startBtn.addActionListener(this);
         conversationTextArea = new JTextArea();
-        conversationTextArea.setBounds(10,10,480, 580);
+        conversationTextArea.setBounds(10,10,480, 550);
         messageInputTextField = new JTextField();
         messageInputTextField.setBounds(10, 600, 420, 50);
         messageInputTextField.addKeyListener(this);
+        idLabel = new JLabel();
+        idLabel.setBounds(10,575,100,10);
 
         add(startBtn);
         setSize(500, 700);
@@ -41,8 +43,6 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener {
 
         client = new Client();
     }
-
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -65,7 +65,6 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener {
 
     public static void main (String[] args) {
         ClientGUI cGui = new ClientGUI();
-
     }
 
     @Override
@@ -87,6 +86,8 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener {
 
     }
 
+    public int getId() {return id;}
+
     class Client {
         private String server;
         private int port;
@@ -99,9 +100,7 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener {
         public Client() {
             server = "localhost";
             port = 5100;
-
             messages = new ArrayList<String>();
-
         }
 
         public boolean start() throws IOException {
@@ -120,6 +119,14 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener {
                 e.printStackTrace();
             }
 
+            try {
+                id = Integer.parseInt(socketInput.readLine());
+                idLabel.setText("Your id: " + id);
+                add(idLabel);
+                System.out.println("Id received: " + id);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             new ListenFromServer().start();
             return true;
         }

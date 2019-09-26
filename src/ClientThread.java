@@ -37,7 +37,7 @@ public class ClientThread
                 // Receive msg from Client
                 String line = this.socIn.readLine();
                 // Add msg to msg history list
-                System.out.println("Client Thread received message: " + line);
+                System.out.println("Client Thread " + id + " received message: " + line);
                 EchoServerMultiThreaded.broadcast(line, this.id);
             }
         } catch (Exception e) {

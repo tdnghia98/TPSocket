@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a387842f-0165-4666-9218-7bb7b76856f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/ClientGUI.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/ClientGUI__1_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/ClientGUI__2_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/ClientGUI__3_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/EchoServerMultiThreaded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Unnamed.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ClientGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Unnamed.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Socket/Client$ListenFromServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Socket/Client.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Socket/EchoServerMultiThreaded.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Socket/EchoServerMultiThreaded.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EchoServerMultiThreaded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EchoServerMultiThreaded.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,6 +40,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -59,14 +54,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.EchoServerMultiThreaded">
+  <component name="RunManager" selected="Multirun.Server + 2 clients">
     <list>
       <item itemvalue="Application.ClientGUI" />
       <item itemvalue="Application.ClientGUI (1)" />
       <item itemvalue="Application.ClientGUI (2)" />
       <item itemvalue="Application.ClientGUI (3)" />
       <item itemvalue="Application.EchoServerMultiThreaded" />
-      <item itemvalue="Multirun.Unnamed" />
+      <item itemvalue="Multirun.Server + 2 clients" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -81,6 +76,8 @@
       <updated>1569404054564</updated>
       <workItem from="1569404058844" duration="4657000" />
       <workItem from="1569490255806" duration="3519000" />
+      <workItem from="1569502636361" duration="31000" />
+      <workItem from="1569502945215" duration="2038000" />
     </task>
     <servers />
   </component>

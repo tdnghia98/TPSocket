@@ -33,10 +33,12 @@ public class EchoServerMultiThreaded  {
             while (true) {
                 Socket clientSocket = listenSocket.accept();
                 System.out.println("Connection from:" + clientSocket.getInetAddress() + " || New client request received :" + clientSocket);
-                ClientThread ct = new ClientThread(clientSocket, ++uniqueId);
                 new PrintStream(clientSocket.getOutputStream()).println(uniqueId);
+                ClientThread ct = new ClientThread(clientSocket, uniqueId);
                 clientThreads.add(ct);
                 sendHistoryToClientThread(ct);
+                announceNewJoin(uniqueId);
+                uniqueId++;
                 ct.start();
             }
         } catch (Exception e) {
@@ -45,13 +47,23 @@ public class EchoServerMultiThreaded  {
     }
 
     public static synchronized void broadcast(String msg, int senderID) {
-        String message = "[" + senderID + "] : " + msg;
+        String message = msg;
+        // -1 is reserved for system message
+        if (senderID != -1) {
+             message = "[" + senderID + "] : " + msg;
+        }
         messages.add(message);
         for (ClientThread clientThread: clientThreads) {
             clientThread.sendMessage(message);
+            System.out.println("Sending message to client -- " + clientThread.id + " -- : " + message);
         }
+
     }
 
+    private static void announceNewJoin(int clientId) {
+        String announcement = "[" + clientId + "] has joined the chat!";
+        broadcast(announcement, -1);
+    }
     private static void sendHistoryToClientThread(ClientThread ct) {
         for (String message: messages) {
             ct.sendMessage(message);
