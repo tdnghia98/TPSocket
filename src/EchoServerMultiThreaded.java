@@ -8,11 +8,15 @@
 import java.io.*;
 import java.lang.reflect.Array;
 import java.net.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EchoServerMultiThreaded  {
     static ArrayList<ClientThread> clientThreads = new ArrayList<ClientThread>();
     static ArrayList<String> messages = new ArrayList<String>();
+    private static final String pattern = "dd-MM-yyyy HH:mm:ss";
+    private static SimpleDateFormat time = new SimpleDateFormat(pattern);
     /**
      * main method
      * @param EchoServer port
@@ -46,23 +50,20 @@ public class EchoServerMultiThreaded  {
         }
     }
 
-    public static synchronized void broadcast(String msg, int senderID) {
-        String message = msg;
-        // -1 is reserved for system message
-        if (senderID != -1) {
-             message = "[" + senderID + "] : " + msg;
-        }
-        messages.add(message);
+    public static synchronized void broadcast(String msg) {
+        // Store message to history
+        messages.add(msg);
         for (ClientThread clientThread: clientThreads) {
-            clientThread.sendMessage(message);
-            System.out.println("Sending message to client -- " + clientThread.id + " -- : " + message);
+            clientThread.sendMessage(msg);
+            System.out.println("Sending message to client -- " + clientThread.id + " -- : " + msg);
         }
 
     }
 
     private static void announceNewJoin(int clientId) {
-        String announcement = "[" + clientId + "] has joined the chat!";
-        broadcast(announcement, -1);
+        String joinTime  = "[" + time.format(new Date()) + "]";
+        String announcement = "~ ANNOUNCEMENT ~ "+ joinTime + " [" + clientId + "] has joined the chat!";
+        broadcast(announcement);
     }
     private static void sendHistoryToClientThread(ClientThread ct) {
         for (String message: messages) {

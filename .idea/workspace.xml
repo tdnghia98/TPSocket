@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a387842f-0165-4666-9218-7bb7b76856f2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Unnamed.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Socket/ClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Socket/ClientThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Socket/EchoServerMultiThreaded.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Socket/EchoServerMultiThreaded.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EchoServerMultiThreaded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EchoServerMultiThreaded.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,8 +75,16 @@
       <workItem from="1569404058844" duration="4657000" />
       <workItem from="1569490255806" duration="3519000" />
       <workItem from="1569502636361" duration="31000" />
-      <workItem from="1569502945215" duration="2038000" />
+      <workItem from="1569502945215" duration="3411000" />
     </task>
+    <task id="LOCAL-00001" summary="feat/join: add the id label and broadcast new member join">
+      <created>1569505277878</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1569505277878</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,5 +102,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat/join: add the id label and broadcast new member join" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat/join: add the id label and broadcast new member join" />
   </component>
 </project>

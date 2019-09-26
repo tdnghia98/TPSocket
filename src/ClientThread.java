@@ -8,6 +8,8 @@
 
 import java.io.*;
 import java.net.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ClientThread
         extends Thread {
@@ -15,6 +17,8 @@ public class ClientThread
     private Socket clientSocket;
     private BufferedReader socIn;
     private PrintStream socOut;
+    private final String pattern = "dd-MM-yyyy HH:mm:ss";
+    private SimpleDateFormat time = new SimpleDateFormat(pattern);
     public int id;
 
     ClientThread(Socket s, int id) throws IOException {
@@ -32,13 +36,16 @@ public class ClientThread
      **/
     public void run() {
         try {
-
+            String line;
+            String receptionTime;
+            String message;
             while (true) {
                 // Receive msg from Client
-                String line = this.socIn.readLine();
-                // Add msg to msg history list
-                System.out.println("Client Thread " + id + " received message: " + line);
-                EchoServerMultiThreaded.broadcast(line, this.id);
+                line = this.socIn.readLine();
+                receptionTime = "[" + time.format(new Date()) + "]";
+                message = receptionTime + " [" + id + "] : " + line;
+                System.out.println(receptionTime + " Client Thread " + id + " received message: " + line);
+                EchoServerMultiThreaded.broadcast(message);
             }
         } catch (Exception e) {
             System.err.println("Error in EchoServer:" + e);
