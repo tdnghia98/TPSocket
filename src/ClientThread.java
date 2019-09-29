@@ -32,23 +32,32 @@ public class ClientThread
 
     /**
      * receives a request from client then sends an echo to the client
+     *
      * @param clientSocket the client socket
      **/
     public void run() {
         try {
             String line;
-            String receptionTime;
-            String message;
             while (true) {
                 // Receive msg from Client
                 line = this.socIn.readLine();
-                receptionTime = "[" + time.format(new Date()) + "]";
-                message = receptionTime + " [" + id + "] : " + line;
-                System.out.println(receptionTime + " Client Thread " + id + " received message: " + line);
-                EchoServerMultiThreaded.broadcast(message);
+                messageManager(line);
             }
         } catch (Exception e) {
             System.err.println("Error in EchoServer:" + e);
+        }
+    }
+
+    public void messageManager(String line) {
+        String receptionTime;
+        String message;
+        if (line.equals("/quit")) {
+            quit();
+        } else {
+            receptionTime = "[" + time.format(new Date()) + "]";
+            message = receptionTime + " [" + id + "] : " + line;
+            System.out.println(receptionTime + " Client Thread " + id + " received message: " + line);
+            EchoServerMultiThreaded.broadcast(message);
         }
     }
 
@@ -56,4 +65,8 @@ public class ClientThread
         this.socOut.println(msg);
     }
 
+    public void quit() {
+        EchoServerMultiThreaded.clientThreads.remove(this);
+        EchoServerMultiThreaded.announceClientQuit(id);
+    }
 }

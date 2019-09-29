@@ -1,16 +1,14 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Date;
 
-public class ClientGUI extends JFrame implements ActionListener, KeyListener {
+public class ClientGUI extends JFrame implements ActionListener, KeyListener, WindowListener {
     private JButton sendBtn;
     private JButton startBtn;
     private JLabel idLabel;
@@ -21,16 +19,19 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener {
     private Client client;
 
     public ClientGUI() {
-        sendBtn = new JButton("send");
-        sendBtn.setBounds(440, 600, 50, 50);
+        sendBtn = new JButton("Send");
+        sendBtn.setBounds(410, 600, 80, 50);
         sendBtn.addActionListener(this);
-        startBtn = new JButton("join");
-        startBtn.setBounds(this.getSize().width/2, this.getSize().height, 50, 50);
+
+        startBtn = new JButton("Join");
+        startBtn.setBounds(this.getWidth()/2, this.getSize().height/2, 100, 50);
         startBtn.addActionListener(this);
+
         conversationTextArea = new JTextArea();
         conversationTextArea.setBounds(10,10,480, 550);
+
         messageInputTextField = new JTextField();
-        messageInputTextField.setBounds(10, 600, 420, 50);
+        messageInputTextField.setBounds(10, 600, 390, 50);
         messageInputTextField.addKeyListener(this);
         idLabel = new JLabel();
         idLabel.setBounds(10,575,100,10);
@@ -40,6 +41,7 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener {
         setLayout(null);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(this);
 
         client = new Client();
     }
@@ -49,7 +51,6 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener {
         if (e.getSource() == sendBtn) {
             client.sendMessage();
         } else if (e.getSource() == startBtn) {
-
             try {
                 client.start();
             } catch (IOException ex) {
@@ -62,6 +63,7 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener {
             repaint();
         }
     }
+
 
     public static void main (String[] args) {
         ClientGUI cGui = new ClientGUI();
@@ -87,6 +89,41 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener {
     }
 
     public int getId() {return id;}
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        client.sendMessage("/quit");
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
+    }
 
     class Client {
         private String server;
@@ -131,14 +168,24 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener {
             return true;
         }
 
-        public void sendMessage() {
+        private void sendMessage() {
             String message = messageInputTextField.getText();
-            if (!message.isEmpty()) {
-                this.socketOutput.println(message);
-                messageInputTextField.setText("");
-                messageInputTextField.requestFocus();
-            }
+            sendMessage(message);
+        }
 
+        private void sendMessage(String msg) {
+            if (!msg.isEmpty()) {
+
+                    this.socketOutput.println(msg);
+                    messageInputTextField.setText("");
+                    messageInputTextField.requestFocus();
+
+                if (msg.equals("/quit")) {
+                    System.exit(0);
+                }
+
+
+            }
         }
 
         class ListenFromServer extends Thread {
