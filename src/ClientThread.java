@@ -30,11 +30,7 @@ public class ClientThread
         socOut = new PrintStream(this.clientSocket.getOutputStream());
     }
 
-    /**
-     * receives a request from client then sends an echo to the client
-     *
-     * @param clientSocket the client socket
-     **/
+
     public void run() {
         try {
             String line;
@@ -50,7 +46,7 @@ public class ClientThread
 
     public void messageManager(String content) {
         String receptionTime;
-        if (line.equals("/quit")) {
+        if (content.equals("/quit")) {
             quit();
         } else {
             receptionTime = time.format(new Date());

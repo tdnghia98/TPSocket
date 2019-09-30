@@ -4,7 +4,7 @@ import javax.persistence.Persistence;
 import javax.persistence.RollbackException;
 
 public class JPAUtil {
-    public static final String PERSISTANCE8_UNIT_NAME = "ChatDB";
+    public static final String PERSISTANCE_UNIT_NAME = "chat";
     private static EntityManagerFactory entityManagerFactory = null;
 
     private static final ThreadLocal<EntityManager> threadLocalEntityManager = new ThreadLocal<EntityManager>() {
@@ -34,7 +34,7 @@ public class JPAUtil {
         if (entityManagerFactory != null) {
             entityManagerFactory = null;
         }
-        entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTANCE8_UNIT_NAME);
+        entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTANCE_UNIT_NAME);
     }
 
     public static synchronized void destroy() {

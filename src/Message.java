@@ -5,12 +5,12 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String sender,
-            time,
+    private int sender;
+    private String time,
             content;
     private boolean isAnnouncement;
 
-    public Message(String sender, String time, String content, boolean isAnnouncement) {
+    public Message(int sender, String time, String content, boolean isAnnouncement) {
         this.sender = sender;
         this.time = time;
         this.content = content;
@@ -23,18 +23,18 @@ public class Message {
     public String format() {
         String formattedMessage = "";
         if (isAnnouncement) {
-            formattedMessage = "~ ANNOUNCEMENT ~ " + time + content;
+            formattedMessage = "\n\n~ ANNOUNCEMENT ~ " + time + content + "\n\n";
         } else {
             formattedMessage = time + " [" + sender + "] " + content;
         }
         return formattedMessage;
     }
 
-    public String getSender() {
+    public int getSender() {
         return sender;
     }
 
-    public void setSender(String sender) {
+    public void setSender(int sender) {
         this.sender = sender;
     }
 

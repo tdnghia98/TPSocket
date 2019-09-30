@@ -17,11 +17,7 @@ public class EchoServerMultiThreaded  {
     static ArrayList<Message> messages = new ArrayList<Message>();
     private static final String pattern = "dd-MM-yyyy HH:mm:ss";
     private static SimpleDateFormat time = new SimpleDateFormat(pattern);
-    /**
-     * main method
-     * @param EchoServer port
-     *
-     **/
+
     public static void main(String args[]){
         ServerSocket listenSocket;
 
@@ -31,8 +27,9 @@ public class EchoServerMultiThreaded  {
         }
         try {
             listenSocket = new ServerSocket(Integer.parseInt(args[0])); //port
-
             System.out.println("Server ready... Listen Socket: " + listenSocket);
+            JPAUtil.init();
+            fetchHistoryMessages();
             while (true) {
                 Socket clientSocket = listenSocket.accept();
                 System.out.println("Connection from:" + clientSocket.getInetAddress() + " || New client request received :" + clientSocket);
@@ -54,7 +51,7 @@ public class EchoServerMultiThreaded  {
         messages.add(message);
         for (ClientThread clientThread: clientThreads) {
             clientThread.sendMessage(message.format());
-            System.out.println("Sending message to client -- " + clientThread.id + " -- : " + message);
+            System.out.println("Sending message to client -- " + clientThread.id + " -- : " + message.format());
         }
 
     }
@@ -62,19 +59,28 @@ public class EchoServerMultiThreaded  {
     private static void announceNewJoin(int clientId) {
         String joinTime  = time.format(new Date());
         String announcement = " [" + clientId + "] has joined the chat!";
-        Message message = new Message()
-        broadcast(announcement);
+        Message message = new Message(-1, joinTime, announcement, true);
+        broadcast(message);
     }
+
     private static void sendHistoryToClientThread(ClientThread ct) {
-        for (String message: messages) {
-            ct.sendMessage(message);
+        for (Message message: messages) {
+            ct.sendMessage(message.format());
+        }
+    }
+
+    private static void fetchHistoryMessages() {
+        messages = Service.getAllMessages();
+        System.out.println("Fetched messages: ");
+        for (Message message: messages) {
+            System.out.println(message.format());
         }
     }
 
     public static void announceClientQuit(int clientId) {
-        String quitTime = "[" + time.format(new Date()) + "]";
-        String announcement = "~ ANNOUNCEMENT ~ "+ quitTime + " [" + clientId + "] has left the chat!";
-        System.out.println(announcement);
-        broadcast(announcement);
+        String quitTime = time.format(new Date());
+        String announcement = " [" + clientId + "] has left the chat!";
+        Message message = new Message(-1, quitTime, announcement, true);
+        broadcast(message);
     }
 }
