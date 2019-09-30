@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class EchoServerMultiThreaded  {
     static ArrayList<ClientThread> clientThreads = new ArrayList<ClientThread>();
-    static ArrayList<String> messages = new ArrayList<String>();
+    static ArrayList<Message> messages = new ArrayList<Message>();
     private static final String pattern = "dd-MM-yyyy HH:mm:ss";
     private static SimpleDateFormat time = new SimpleDateFormat(pattern);
     /**
@@ -24,7 +24,6 @@ public class EchoServerMultiThreaded  {
      **/
     public static void main(String args[]){
         ServerSocket listenSocket;
-        int uniqueId = 0;
 
         if (args.length != 1) {
             System.out.println("Usage: java EchoServer <EchoServer port>");
@@ -37,12 +36,12 @@ public class EchoServerMultiThreaded  {
             while (true) {
                 Socket clientSocket = listenSocket.accept();
                 System.out.println("Connection from:" + clientSocket.getInetAddress() + " || New client request received :" + clientSocket);
+                int uniqueId = clientThreads.size() + 1;
                 new PrintStream(clientSocket.getOutputStream()).println(uniqueId);
                 ClientThread ct = new ClientThread(clientSocket, uniqueId);
                 clientThreads.add(ct);
                 sendHistoryToClientThread(ct);
                 announceNewJoin(uniqueId);
-                uniqueId++;
                 ct.start();
             }
         } catch (Exception e) {
@@ -50,24 +49,32 @@ public class EchoServerMultiThreaded  {
         }
     }
 
-    public static synchronized void broadcast(String msg) {
+    public static synchronized void broadcast(Message message) {
         // Store message to history
-        messages.add(msg);
+        messages.add(message);
         for (ClientThread clientThread: clientThreads) {
-            clientThread.sendMessage(msg);
-            System.out.println("Sending message to client -- " + clientThread.id + " -- : " + msg);
+            clientThread.sendMessage(message.format());
+            System.out.println("Sending message to client -- " + clientThread.id + " -- : " + message);
         }
 
     }
 
     private static void announceNewJoin(int clientId) {
-        String joinTime  = "[" + time.format(new Date()) + "]";
-        String announcement = "~ ANNOUNCEMENT ~ "+ joinTime + " [" + clientId + "] has joined the chat!";
+        String joinTime  = time.format(new Date());
+        String announcement = " [" + clientId + "] has joined the chat!";
+        Message message = new Message()
         broadcast(announcement);
     }
     private static void sendHistoryToClientThread(ClientThread ct) {
         for (String message: messages) {
             ct.sendMessage(message);
         }
+    }
+
+    public static void announceClientQuit(int clientId) {
+        String quitTime = "[" + time.format(new Date()) + "]";
+        String announcement = "~ ANNOUNCEMENT ~ "+ quitTime + " [" + clientId + "] has left the chat!";
+        System.out.println(announcement);
+        broadcast(announcement);
     }
 }
