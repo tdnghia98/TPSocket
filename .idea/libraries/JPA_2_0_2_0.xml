@@ -2,6 +2,8 @@
   <library name="JPA 2.0-2.0">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/javax.persistence.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/eclipselink.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-8.0.17.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

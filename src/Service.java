@@ -23,7 +23,8 @@ public class Service {
             JPAUtil.createEntityManager();
             JPAUtil.openTransaction();
 
-            messages = (ArrayList<Message>) MessageDAO.findAll();
+            messages.addAll(MessageDAO.findAll());
+
 
             JPAUtil.commitTransaction();
         } catch (Exception ex) {

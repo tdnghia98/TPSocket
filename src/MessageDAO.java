@@ -8,6 +8,6 @@ public class MessageDAO {
     public static List<Message> findAll() {
         String s = "select m from Message m";
         Query query = JPAUtil.getEntityManager().createQuery(s);
-        return (List<Message>)query.getResultList();
+        return (List<Message>) query.getResultList();
     }
 }

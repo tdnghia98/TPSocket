@@ -52,6 +52,7 @@ public class ClientThread
             receptionTime = time.format(new Date());
             Message message = new Message(this.id, receptionTime, content, false);
             EchoServerMultiThreaded.broadcast(message);
+            Service.addMessage(message);
         }
     }
 

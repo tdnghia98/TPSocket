@@ -1,10 +1,12 @@
 import javax.persistence.*;
 
 @Entity
+@Table(name="message")
 public class Message {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private int sender;
     private String time,
             content;
