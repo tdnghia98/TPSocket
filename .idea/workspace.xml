@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a387842f-0165-4666-9218-7bb7b76856f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/mysql-connector-java-8.0.17.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/JPA_2_0_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/JPA_2_0_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/JPA_2_0_2_0__2_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socket.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Socket.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Socket/ClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Socket/ClientThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MessageDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientGUI.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +54,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feat/join" />
+        <entry key="$PROJECT_DIR$" value="feat/multicast" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -101,7 +92,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.EchoServerMultiThreaded">
+  <component name="RunManager" selected="Application.ClientGUI">
     <list>
       <item itemvalue="Application.ClientGUI" />
       <item itemvalue="Application.ClientGUI (1)" />
@@ -158,6 +149,9 @@
       <workItem from="1569490255806" duration="3519000" />
       <workItem from="1569502636361" duration="31000" />
       <workItem from="1569502945215" duration="3411000" />
+      <workItem from="1569931351581" duration="475000" />
+      <workItem from="1570542845626" duration="5223000" />
+      <workItem from="1570566207890" duration="247000" />
     </task>
     <task id="LOCAL-00001" summary="feat/join: add the id label and broadcast new member join">
       <created>1569505277878</created>
