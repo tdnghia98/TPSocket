@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a387842f-0165-4666-9218-7bb7b76856f2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Unnamed.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/KeyGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/EchoServerMultiThreaded.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Socket/ClientThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Socket/EchoServerMultiThreaded.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EchoServerMultiThreaded.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +62,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feat/multicast" />
+        <entry key="$PROJECT_DIR$" value="multicast" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -92,13 +100,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ClientGUI">
+  <component name="RunManager" selected="Application.ClientGUI (2)">
+    <configuration name="Server" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Server" />
+      <module name="Socket" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.ClientGUI" />
       <item itemvalue="Application.ClientGUI (1)" />
       <item itemvalue="Application.ClientGUI (2)" />
       <item itemvalue="Application.ClientGUI (3)" />
-      <item itemvalue="Application.EchoServerMultiThreaded" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Multirun.Unnamed" />
     </list>
   </component>
   <component name="ServiceViewManager">
@@ -191,5 +207,16 @@
     <MESSAGE value="feat/join: add the id label and broadcast new member join" />
     <MESSAGE value="feat/join: Error: cannot compile project when adding database" />
     <option name="LAST_COMMIT_MESSAGE" value="feat/join: Error: cannot compile project when adding database" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Server.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
