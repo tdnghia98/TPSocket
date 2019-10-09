@@ -73,8 +73,9 @@ public class Server {
         for (String s: splitContent) {
             System.out.print(s +" ");
         }
+        String contentType = splitContent[0];
+        System.out.println();
         if (splitContent.length == 3) {
-            String contentType = splitContent[0];
             String uniqueKey = splitContent[1];
             String contentRequest = splitContent[2];
             if (contentType.equals("sys")) {
@@ -90,10 +91,12 @@ public class Server {
                     }
                 }
             }
-        } else {
-            System.out.println("Bad request");
-            System.err.println("Received message: " + content);
+        } else if (contentType.equals("mess")) {
         }
+    }
+
+    private Message createMessageFromReceivedContent (String content) {
+
     }
 
     private String createOutputMessage(String uniqueKey, String topic, String content) {

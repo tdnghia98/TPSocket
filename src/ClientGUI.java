@@ -233,18 +233,29 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener, Wi
                     try {
                         socket.receive(msgPacket);
                         String message = new String(msgPacket.getData(), 0, msgPacket.getLength());
-                        System.out.println("A msgPacket coming from socket: " + message);
+                        System.out.print("A msgPacket coming from socket: " + message);
                         String[] splitMessage = message.split("__");
                         if (splitMessage[0].equals("mess")) {
                             // Message from other peers
-                            messages.add(message);
-                            conversationTextArea.append("\n" + message.replace("mess__", ""));
+                            System.out.println(" || It's a peer message.");
+                            String formattedMessage = message.replace("mess__", "");
+                            messages.add(formattedMessage);
+                            conversationTextArea.append("\n" + formattedMessage);
                             System.out.println("A peer message arrived: " + message);
                         } else if (splitMessage[0].equals("")) {
                             // Message from system
+                            System.out.println(" || It's a system message.");
+                            System.out.print("Split message: ");
+                            for (String s: splitMessage) {
+                                System.out.print(s + " ");
+                            }
+                            System.out.println();
                             if (splitMessage[1].equals("sys")) {
+                                System.out.println("splitMessage[1] = sys");
                                 if (splitMessage[2].equals(uniqueKey)) {
+                                    System.out.println("splitMessage[2] = " + uniqueKey + " || uniqueKey = " + uniqueKey);
                                     if (splitMessage[3].equals("id")) {
+                                        System.out.println("splitMessage[3] = id");
                                         if (id == null) {
                                             id = Integer.valueOf(splitMessage[4]);
                                             idLabel.setText("Your id: " + id);
@@ -252,9 +263,15 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener, Wi
                                             System.out.println("Id received: " + id);
                                         }
                                     } else if (splitMessage[3].equals("mess")) {
-                                        messages.add(message);
-                                        conversationTextArea.append("\n" + message.replace("mess__", ""));
-                                        System.out.println(message);
+                                        System.out.println("splitMessage[3] = mess");
+                                        String targetReplacement = "__sys__" + uniqueKey + "__mess__";
+                                        System.out.println("Target replacement = " + targetReplacement);
+                                        int index = message.lastIndexOf(targetReplacement);
+                                        System.out.println("index = " + index);
+                                        String formattedMessage = message.replace(targetReplacement, "");
+                                        System.out.println("Formatted message: " + formattedMessage);
+                                        messages.add(formattedMessage);
+                                        conversationTextArea.append("\n" + formattedMessage);
                                     }
                                 }
                             }
