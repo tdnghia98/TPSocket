@@ -52,7 +52,7 @@ public class Server {
                 DatagramPacket msgPacket = new DatagramPacket(buf, buf.length);
                 try {
                     listenSocket.receive(msgPacket);
-                    String message = new String(buf, 0, buf.length);
+                    String message = new String(msgPacket.getData(), 0, msgPacket.getLength());
                     treatClientRequest(message);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -80,11 +80,11 @@ public class Server {
             if (contentType.equals("sys")) {
                 if (!uniqueKey.equals("")) {
                     if (contentRequest.equals("id")) {
-                        String idResponse = createSystemResponse(uniqueKey, "id", String.valueOf(clientNumber));
+                        String idResponse = createOutputMessage(uniqueKey, "id", String.valueOf(clientNumber));
                         sendMessage(idResponse);
                         clientNumber++;
                         for (Message message : messages) {
-                            String distributedMessageResponse = createSystemResponse(uniqueKey, "mess", message.format());
+                            String distributedMessageResponse = createOutputMessage(uniqueKey, "mess", message.format());
                             sendMessage(distributedMessageResponse);
                         }
                     }
@@ -96,13 +96,14 @@ public class Server {
         }
     }
 
-    private String createSystemResponse(String uniqueKey, String topic, String content) {
-        return "__" + "sys" + "__" + uniqueKey + "__" + topic + "__" + content;
+    private String createOutputMessage(String uniqueKey, String topic, String content) {
+        String formattedMessage = "__" + "sys" + "__" + uniqueKey + "__" + topic + "__" + content;
+        System.out.println("Output message: " + formattedMessage);
+        return formattedMessage;
     }
 
     private void sendMessage(String msg) throws IOException {
         if (!msg.isEmpty()) {
-            msg = "mess__" + msg;
             DatagramPacket msgPacket = new DatagramPacket(msg.getBytes(), msg.getBytes().length, serverAddress, port);
             listenSocket.send(msgPacket);
         }

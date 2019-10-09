@@ -3,6 +3,7 @@ import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -194,15 +195,21 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener, Wi
         }
 
         private String createSystemRequest(String uniqueKey, String content) {
-            return "sys__" + uniqueKey + "__" + content;
+            String formattedMessage = "sys__" + uniqueKey + "__" + content;
+            System.out.println("A system request has been created: " + formattedMessage);
+            return formattedMessage;
         }
         private String createPeerMessage(String content) {
-            return "mess__" + content;
+            String formattedMessage = "mess__" + content;
+            System.out.println("A peer message has been created: " + formattedMessage);
+            return formattedMessage;
         }
 
         private void sendMessage() throws IOException {
             String message = messageInputTextField.getText();
-            sendMessage(createPeerMessage(message));
+            if (message.length() != 0) {
+                sendMessage(createPeerMessage(message));
+            }
         }
 
         private void sendMessage(String msg) throws IOException {
@@ -215,8 +222,6 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener, Wi
                 if (msg.equals("/quit")) {
                     System.exit(0);
                 }
-
-
             }
         }
 
@@ -227,13 +232,14 @@ public class ClientGUI extends JFrame implements ActionListener, KeyListener, Wi
                     DatagramPacket msgPacket = new DatagramPacket(buf, buf.length);
                     try {
                         socket.receive(msgPacket);
-                        String message = new String(buf, 0, buf.length);
+                        String message = new String(msgPacket.getData(), 0, msgPacket.getLength());
+                        System.out.println("A msgPacket coming from socket: " + message);
                         String[] splitMessage = message.split("__");
                         if (splitMessage[0].equals("mess")) {
                             // Message from other peers
                             messages.add(message);
                             conversationTextArea.append("\n" + message.replace("mess__", ""));
-                            System.out.println(message);
+                            System.out.println("A peer message arrived: " + message);
                         } else if (splitMessage[0].equals("")) {
                             // Message from system
                             if (splitMessage[1].equals("sys")) {

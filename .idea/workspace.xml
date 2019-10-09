@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a387842f-0165-4666-9218-7bb7b76856f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Unnamed.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/KeyGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/EchoServerMultiThreaded.xml" beforeDir="false" />
+    <list default="true" id="a387842f-0165-4666-9218-7bb7b76856f2" name="Default Changelist" comment="add multicast and 1 server">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Socket/ClientThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Socket/EchoServerMultiThreaded.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EchoServerMultiThreaded.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +94,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ClientGUI (2)">
+  <component name="RunManager" selected="Application.ClientGUI (1)">
     <configuration name="Server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Server" />
       <module name="Socket" />
@@ -168,6 +162,8 @@
       <workItem from="1569931351581" duration="475000" />
       <workItem from="1570542845626" duration="5223000" />
       <workItem from="1570566207890" duration="247000" />
+      <workItem from="1570572645071" duration="41000" />
+      <workItem from="1570601643098" duration="3076000" />
     </task>
     <task id="LOCAL-00001" summary="feat/join: add the id label and broadcast new member join">
       <created>1569505277878</created>
@@ -183,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569855868299</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add multicast and 1 server">
+      <created>1570572669709</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1570572669709</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,17 +209,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="feat/join: add the id label and broadcast new member join" />
     <MESSAGE value="feat/join: Error: cannot compile project when adding database" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat/join: Error: cannot compile project when adding database" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Server.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="add multicast and 1 server" />
+    <option name="LAST_COMMIT_MESSAGE" value="add multicast and 1 server" />
   </component>
 </project>
