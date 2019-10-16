@@ -95,9 +95,9 @@ public class Server {
         }
     }
 
-    private Message createMessageFromReceivedContent (String content) {
-
-    }
+//    private Message createMessageFromReceivedContent (String content) {
+//
+//    }
 
     private String createOutputMessage(String uniqueKey, String topic, String content) {
         String formattedMessage = "__" + "sys" + "__" + uniqueKey + "__" + topic + "__" + content;

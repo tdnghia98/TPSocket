@@ -2,6 +2,7 @@
   <configuration default="false" name="Unnamed" type="Multirun" factoryName="Multirun" singleton="false" separateTabs="true" startOneByOne="true" markFailedProcess="true" hideSuccessProcess="false" delayTime="0">
     <runConfiguration name="Server" type="Application" />
     <runConfiguration name="ClientGUI" type="Application" />
+    <runConfiguration name="ClientGUI (1)" type="Application" />
     <method v="2" />
   </configuration>
 </component>
